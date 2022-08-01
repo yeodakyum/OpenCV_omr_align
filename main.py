@@ -78,7 +78,7 @@ def four_point_transform(image, pts):
 
 
 
-img=cv2.imread('test.jpg') #read image
+img=cv2.imread('test3.png') #read image
 ih, iw, _ = img.shape
 if ih > iw:
     img = cv2.resize(img, dsize=(1174, 1662), interpolation=cv2.INTER_AREA)
@@ -122,7 +122,7 @@ for c in contours:
 
             print(mean)
 
-        if int(w)< 25 and int(h)< 25 and (ar < 0.90 or ar > 1.1) and w*h>180 and sum(mean)<300:
+        if int(w)< 25 and int(h)< 25 and (ar < 0.90 or ar > 1.1) and w*h>200 and sum(mean)<300:
             cv2.drawContours(img, [c], -1, (0, 0, 255), 2)
             ptrd.append([x+w/2, y+h/2])
             print(mean)
