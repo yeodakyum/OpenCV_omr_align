@@ -1,7 +1,6 @@
 import cv2 as cv2
 import numpy as np
-
-
+import time
 def ResizeWithAspectRatio(image, width=None, height=None, inter=cv2.INTER_AREA):
     dim = None
     (h, w) = image.shape[:2]
@@ -79,6 +78,8 @@ def four_point_transform(image, pts):
 
 
 img=cv2.imread('test3.png') #read image
+start_time = time.time()
+
 ih, iw, _ = img.shape
 if ih > iw:
     img = cv2.resize(img, dsize=(1174, 1662), interpolation=cv2.INTER_AREA)
@@ -142,4 +143,5 @@ print(order_point(ptru, ptrd))
 show = four_point_transform(img,order_point(ptru, ptrd))
 resize = ResizeWithAspectRatio(show, width=640)
 cv2.imshow("Result", resize )
+print("--- %s seconds ---" % (time.time() - start_time))
 cv2.waitKey(0)
